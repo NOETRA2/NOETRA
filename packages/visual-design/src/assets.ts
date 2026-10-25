@@ -54,10 +54,16 @@ function contained(root: string, target: string): boolean {
 export async function imageMetadata(projectRoot: string, path: string, signal?: AbortSignal) {
   signal?.throwIfAborted();
   if (!isAbsolute(path) || extname(path).toLowerCase() !== '.png') fail('UNSUPPORTED_IMAGE', 'Provide an explicit absolute path to a still PNG inside the active project.');
-  const root = await realpath(projectRoot);
-  if (root.toLowerCase() === homedir().toLowerCase() || root === parse(root).root) fail('VISUAL_SCOPE_TOO_BROAD', 'Use a dedicated visual project, not a home/drive root.');
-  const lexical = resolve(path);
-  if (!contained(root, lexical)) fail('IMAGE_OUTSIDE_PROJECT', 'Visual assets must stay inside the active project.');
+  const declaredRoot = resolve(projectRoot), root = await realpath(declaredRoot);
+  const home = await realpath(homedir()).catch(() => resolve(homedir()));
+  if (root.toLowerCase() === home.toLowerCase() || root === parse(root).root) fail('VISUAL_SCOPE_TOO_BROAD', 'Use a dedicated visual project, not a home/drive root.');
+  const requested = resolve(path);
+  // The explicitly selected project may itself use an OS alias (/var on macOS,
+  // an 8.3 path or a junction on Windows). Rebase only its in-project suffix;
+  // child symlinks still undergo the full lstat walk below before being opened.
+  const lexical = contained(root, requested) ? requested
+    : contained(declaredRoot, requested) ? resolve(root, relative(declaredRoot, requested))
+    : fail('IMAGE_OUTSIDE_PROJECT', 'Visual assets must stay inside the active project.');
   let parent = lexical;
   while (relative(root, parent) !== '') {
     if ((await lstat(parent)).isSymbolicLink()) fail('IMAGE_SYMLINK', 'Symlink/junction image paths are not accepted.');

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const VERSION = '0.1.0-alpha.4';
+export const VERSION = '0.1.0-alpha.5';
 export function supportedNode(version = process.versions.node): boolean {
   const [major = 0, minor = 0] = version.replace(/^v/, '').split('.').map(Number);
   return major >= 26 || (major === 24 && minor >= 11);

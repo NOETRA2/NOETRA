@@ -1,6 +1,6 @@
 {
   "name": "noetra",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "description": "Local-first structured reasoning, evidence, planning and permission-scoped software investigation for AI agents",
   "type": "module",
   "license": "MIT",
