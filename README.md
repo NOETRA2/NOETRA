@@ -22,17 +22,6 @@ The images below are **Blender renders of actual meshes**, not generated concept
 pictures presented as 3D output. Details, settings and limitations are in
 [comparisons](docs/comparisons/README.md).
 
-### Sports car: without and with NOETRA assistance
-
-![Actual car meshes: without NOETRA and with NOETRA assistance](docs/assets/car-comparison.png)
-
-The same host authored both Blender models. NOETRA recorded constraints, checked
-measurements with Z3 and helped structure the repair plan; the host implemented
-the geometry changes. Both use 146 objects and 92,034 triangles, with matching
-camera, lighting and materials. Length/width fit and trim attachment improved;
-height became slightly worse, and a strict width target still missed by 2 mm.
-This is a sequential workflow demonstration, not proof of general AI improvement.
-
 ### Lion: direct underlying model versus NOETRA workflow
 
 ![Actual lion meshes: direct Hunyuan baseline and NOETRA workflow](docs/assets/lion-comparison.png)
