@@ -12,12 +12,15 @@
 | Windows bundle installer | Passed into a new dedicated directory; no global install, PATH change or real client registration |
 | Actual demo outputs | Entailment, counterexample, blocked plan, feasible plan and attributed observation captured |
 | HTTP demo behavior | Built server tested, including input bounds, cross-origin rejection, fixed routes and independent evidence runs |
-| MCP metadata | Validated against official 2025-12-11 JSON Schema; identifiers/versions match package metadata |
+| MCP metadata | Official JSON Schema and official publisher/server validation passed; identifiers/versions match the public npm package |
 | Hugging Face bundle | Exported; runtime-only dependency install, protocol self-test and a real formal example passed outside the source checkout |
-| Docker image / live Space | Not tested: Docker daemon unavailable; no Hugging Face account supplied |
-| Browser layout and interactive visual check | Pending: browser use remained disabled in Work settings |
+| Docker image | Not tested: local Docker startup failed; Hub Docker hosting requires PRO for this account; no paid plan was purchased |
+| Free static Space | Uploaded under NOETRA2; public deployment reports RUNNING; contains recorded results, not a remote engine |
+| Public preview browser QA | Remote browser checked all five tabs, result inspection, pinned commands, install links, video and poster; passed with no reported layout issues |
+| Local demo browser layout | Local browser access remained disabled in Work settings; its HTTP behavior was tested separately |
 | Walkthrough | 60.000-second silent presentation of real captured results; result cards, not browser footage |
-| npm / official registry publication | Not performed; owner accounts/authentication and registry-side ownership validation pending |
+| npm publication | `noetra@0.1.0-alpha.4` public, publisher harshavardhan2; registry integrity exactly matches reviewed artifact; fresh anonymous install passed the protocol/solver self-test |
+| Official MCP Registry publication | Published `io.github.NOETRA2/noetra@0.1.0-alpha.4`; public listing independently checked against the npm package identifier and version |
 | Product Hunt / Show HN | Drafts prepared; not posted |
 | Independent developer adoption | Not measured; local maintainer test installs are not counted as users |
 
@@ -40,4 +43,4 @@ folder and runs the installed CLI. It uses fixture client settings only. Its
 report gives the local artifact directory for inspection. It never publishes.
 
 JSON Schema validation does not prove ownership, publication or a connected AI
-host. The package name remains proposed until npm accepts the owner's publish.
+host. The npm publication and exact-version install were verified separately.

@@ -7,28 +7,35 @@ an ordinary CPU with Node.js; **no GPU, AI subscription or model API key needed*
 It stores attributed evidence, checks supplied integer constraints through Z3,
 and plans from explicit dependencies. It does not replace your host AI.
 
-[Try the demo locally](#try-it-in-one-minute) · [Install](#install-from-this-repository) ·
+[Open the recorded preview](https://huggingface.co/spaces/NOETRA2/noetra-demo) ·
+[Try the engine locally](#try-it-in-one-minute) · [npm](https://www.npmjs.com/package/noetra) ·
 [Connect your agent](#connect-an-ai-host) · [Tool API](docs/api/README.md) ·
 [Launch status](docs/launch/README.md)
 
-**Developer alpha `0.1.0-alpha.4` — npm and official MCP Registry publication are
-prepared, not live.** Use the source or a locally built package for now.
+**Developer alpha `0.1.0-alpha.4`.** Check [release availability](docs/launch/README.md)
+for current npm, MCP Registry and hosted-demo status. Source and local tarball
+installation are available independently of those services.
 Image-to-3D is an optional, unfinished advanced workflow; no validated 90% fidelity
 claim exists.
 
 ## Try it in one minute
 
-After cloning the repository (Node.js 24.11+ in 24.x, or 26+):
+With Node.js 24.11+ in 24.x, or Node.js 26+, run the published exact version:
 
 ```sh
-npm ci --ignore-scripts
-npm run demo
+npx --yes noetra@0.1.0-alpha.4 demo
 ```
 
 Open **http://127.0.0.1:7860**. Check a claim, toggle a missing prerequisite or
 inspect an evidence record. These controls execute the actual engine, not canned
 results. Every run has a separate in-memory database, discarded afterward. No
 model downloads or optional 3D tools are installed. Stop with Ctrl+C.
+
+No installation yet? The [free online preview](https://huggingface.co/spaces/NOETRA2/noetra-demo)
+lets you inspect real recorded examples and the walkthrough. It displays stored
+results; it does not run the engine remotely. The command above runs the actual
+engine locally. The npm artifact was checked against the reviewed upload and a
+fresh anonymous registry installation passed the MCP/SQLite/Z3 self-test.
 
 ![Actual NOETRA core output, presented as a result card](docs/assets/noetra-demo.png)
 
@@ -85,9 +92,19 @@ node dist/apps/cli/src/index.js doctor
 node dist/apps/cli/src/index.js test
 ```
 
-The project is **not published to npm**. Do not assume `npx noetra` installs this
-software. GitHub's **Code → Download ZIP** also provides the source; extract it
-and run the npm commands from that folder.
+GitHub's **Code → Download ZIP** also provides the source; extract it and run
+the npm commands from that folder. Once the exact release appears under the
+verified owner **harshavardhan2** on npm, it can be run without a source build:
+
+```sh
+npx --yes noetra@0.1.0-alpha.4 test
+npx --yes noetra@0.1.0-alpha.4 demo
+```
+
+Use a project-local installation for durable AI-host registration, rather than
+relying on an npm temporary cache path. Availability and publish verification
+are tracked in the release-status document; these commands are not a claim that
+an unverified package or hosted endpoint is live.
 
 To build a local distributable:
 

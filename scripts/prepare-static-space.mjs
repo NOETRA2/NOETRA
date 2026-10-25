@@ -1,0 +1,14 @@
+import { mkdir, cp, readFile, writeFile } from 'node:fs/promises';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+if(!process.argv[2])throw new Error('Pass a new static Space output folder.');
+const out=resolve(process.argv[2]);await mkdir(out,{recursive:false});
+for(const name of ['README.md','index.html','app.js'])await cp(resolve(root,'deploy/huggingface-static',name),resolve(out,name));
+const css=await readFile(resolve(root,'apps/demo/public/style.css'),'utf8');
+await writeFile(resolve(out,'style.css'),css+'\n.notice{border:1px solid #496454;background:#1b2b23;color:#c9ddcf;padding:16px 22px;border-radius:12px;margin-bottom:24px;font-size:14px}.install,.walkthrough{margin-top:28px;padding:26px;background:#1a1f27;border:1px solid #343d49;border-radius:16px}video{width:100%;max-height:600px;background:#101419;border-radius:10px}.output>a{font-size:12px}nav button{font-size:13px}#input{min-height:120px}\n');
+await cp(resolve(root,'docs/demo/results.json'),resolve(out,'results.json'));
+await cp(resolve(root,'docs/assets/noetra-demo.png'),resolve(out,'poster.png'));
+await cp(resolve(root,'docs/media/noetra-demo-60s.mp4'),resolve(out,'walkthrough.mp4'));
+await cp(resolve(root,'LICENSE'),resolve(out,'LICENSE'));
+console.log(JSON.stringify({directory:out,files:8,static:true,serverSideComputation:false,published:false}));

@@ -10,11 +10,11 @@ independent user adoption.
 | Channel | Status | Next step |
 | --- | --- | --- |
 | GitHub | Public source, real mesh examples and ten discovery topics applied | Read the quickstart, try the CPU demo, report an issue |
-| Core package | `0.1.0-alpha.4` tarball prepared and tested locally | Create/sign into the owner's npm account before publication |
-| npm | Not published; `noetra` is a proposed, unreserved name | Recheck the name; use an owned scope if needed |
-| Official MCP Registry | `server.json` prepared, official JSON Schema validated locally | Publish npm first, then authenticate as NOETRA2 and validate/publish through the official publisher |
+| Core package | `0.1.0-alpha.4` tested locally and from npm | Install the exact alpha version and run its self-test |
+| npm | [Public `noetra@0.1.0-alpha.4`](https://www.npmjs.com/package/noetra), publisher `harshavardhan2` | Reviewed artifact integrity matched; anonymous exact-version installation passed |
+| Official MCP Registry | Published `io.github.NOETRA2/noetra@0.1.0-alpha.4` | Public record points to the verified npm package |
 | Glama | An index entry was externally readable on 25 October 2026 | Link the existing listing; no duplicate submission |
-| Hugging Face | CPU Docker Space bundle prepared | Create an account/Space and verify the actual build before claiming a live demo |
+| Hugging Face | [Free public static preview running](https://huggingface.co/spaces/NOETRA2/noetra-demo) | Five result tabs, structured output, install links, poster and video passed public browser QA; actual engine runs locally |
 | Show HN / Product Hunt | Drafts only, not posted | Wait for stable installation and a working public demo |
 
 GitHub topics applied on 25 October 2026: `mcp`, `model-context-protocol`, `ai-agents`,
@@ -25,7 +25,11 @@ discoverability does not guarantee that any AI assistant will know the project.
 [Local preparation verification](VERIFICATION.md) distinguishes completed checks
 from account-dependent publication and visual/hosting checks still pending.
 
-## First publication: owner-operated steps
+## Publication method and future releases
+
+The first alpha is now public. The steps below document the process for future
+releases. Current npm tags include `alpha` and `latest`, both pointing to the same
+developer alpha; neither is a claim of a stable release. Pin the exact version.
 
 1. Create your npm account and enable its required publishing authentication.
    Sign in directly using `npm login`; never paste tokens/passwords in issues,
@@ -39,8 +43,8 @@ from account-dependent publication and visual/hosting checks still pending.
    Do not use the `latest` tag for this developer alpha. Confirm the exact package,
    owner, version and install command on npm afterward.
 5. Only **after** successful npm publication, test `npx noetra@alpha --version`
-   and `npx noetra@alpha test` on a fresh machine. These are **future commands**,
-   not working registry installs today. `npx noetra@alpha setup` previews host
+   and `npx noetra@alpha test` on a fresh machine. Version `0.1.0-alpha.4` was
+   independently fetched into a fresh local npm cache and passed. `npx noetra@alpha setup` previews host
    settings; for durable registration use a project-local installed package rather
    than relying on an npm temporary cache path.
 
@@ -69,6 +73,18 @@ ownership checks have not run merely because local JSON Schema validation passed
 The browser demo is not a remote MCP endpoint and is not advertised as one.
 
 ## Hugging Face demo
+
+The owner's free static option is deployed. It shows real recorded output, not
+new computation. Rebuild that preview into a new folder with:
+
+```sh
+node scripts/prepare-static-space.mjs ../NOETRA-static
+```
+
+On 25 October 2026 the Hub rejected Docker hosting on this account without PRO.
+No subscription or paid hardware was purchased. The optional Docker preparation
+below is retained for an owner with appropriate hosting access; it is not the
+running free preview.
 
 ```sh
 npm run build

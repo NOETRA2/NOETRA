@@ -8,3 +8,5 @@ coverage/
 .vitest/
 .env*
 !.env.example
+.npmrc
+.mcpregistry*
