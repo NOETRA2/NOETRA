@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.noetra/
+.tools/
+*.sqlite*
+*.tgz
+coverage/
+.vitest/
+.env*
+!.env.example

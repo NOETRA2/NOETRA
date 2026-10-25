@@ -1,0 +1,8 @@
+{
+  "name": "noetra-authorized-electron-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "main.js",
+  "description": "Synthetic, intentionally incomplete static-analysis fixture. Never execute or ship as an application."
+}

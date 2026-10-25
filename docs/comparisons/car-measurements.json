@@ -1,0 +1,57 @@
+{
+  "subject": "Original futuristic sports car, same frozen brief",
+  "baselineFrozenUnchanged": true,
+  "matchedBlenderPresentation": true,
+  "wheelPlacementPreserved": true,
+  "baseline": {
+    "dimensionsMm": [
+      4736,
+      2075,
+      1149
+    ],
+    "wheelbaseMm": 2700,
+    "triangles": 92034,
+    "objects": 146,
+    "trimSurfaceDistance": {
+      "maximumMm": 126,
+      "averageOfPerPartMeansMm": 62
+    }
+  },
+  "withNoetra": {
+    "dimensionsMm": [
+      4600,
+      2002,
+      1142
+    ],
+    "wheelbaseMm": 2700,
+    "triangles": 92034,
+    "objects": 146,
+    "trimSurfaceDistance": {
+      "maximumMm": 37,
+      "averageOfPerPartMeansMm": 15
+    }
+  },
+  "targetDimensionsMm": [
+    4600,
+    2000,
+    1160
+  ],
+  "observedImprovements": [
+    "Length is closer to the author-chosen envelope.",
+    "Width is closer to the author-chosen envelope.",
+    "Decorative cockpit/lamp geometry is nearer its supporting surfaces."
+  ],
+  "observedNonImprovements": [
+    "Overall height is slightly further from the 1,160 mm target after raised roof trim is fitted to the canopy.",
+    "Strict 2,000 mm width is still missed by about 2 mm.",
+    "Surface fitting and envelope containment changed the front fascia appearance; visual preference remains mixed and subjective."
+  ],
+  "limitations": [
+    "Single sequential demonstration, not a blind, seed-controlled or statistically valid causal benchmark.",
+    "Agent authored the candidates, formal encodings and Blender repairs. NOETRA did not independently invent the car, inspect pixels, generate meshes or operate Blender.",
+    "Baseline was not intentionally degraded. Both use the same 146 components, 92,034 triangle budget and Blender settings.",
+    "Concept PNGs are stochastic generated design images, not renders of the GLB mesh and not exact same-shape reconstructions.",
+    "This is a simplified visual 3D study, not CAD, manufacturing-ready geometry, physical simulation or a roadworthy vehicle.",
+    "Formal results refer to rounded millimetre measurements supplied by the host; they do not certify the measurement process."
+  ]
+}

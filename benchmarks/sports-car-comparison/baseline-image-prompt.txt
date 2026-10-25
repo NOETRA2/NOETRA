@@ -1,0 +1,9 @@
+Use case: product-mockup
+Asset type: futuristic sports car concept image for an image-and-3D workflow comparison
+Primary request: Design an original, unbranded, futuristic road-going two-seat electric sports coupe.
+Scene/backdrop: dark neutral photographic studio, subtle charcoal floor and soft reflections, no props.
+Subject: low and wide silver metallic coupe, wedge nose, four conventional rubber tires, sculpted wheel arches, dark wraparound cockpit glazing, restrained cyan front LED accents, red rear light strip, graphite splitter and rear diffuser. Approximate full-size proportions 4.60 m long, 2.00 m wide, 1.16 m high with 2.70 m wheelbase.
+Style/medium: refined photorealistic automotive design concept, coherent manufacturable-looking surfaces; not a claim of actual engineering feasibility.
+Composition/framing: landscape image, entire vehicle visible in a front three-quarter view, generous margin, camera around headlight height, a normal-to-short-telephoto lens.
+Lighting/mood: broad soft white studio lights reveal surface curvature; restrained premium presentation.
+Constraints: one complete vehicle only; coherent symmetric design; no hovering, no wings, no weapons, no logos, no labels, no text, no watermark. Do not crop the car.

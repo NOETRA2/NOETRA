@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "provider": "hunyuan3d-2mini-turbo",
+  "source": {
+    "repository": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+    "commit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+    "files": [
+      {
+        "path": "LICENSE",
+        "bytes": 17829,
+        "gitBlobSha1": "a37e08f3a2967aa04fd6b6b514ba9b4a75c836c2"
+      },
+      {
+        "path": "NOTICE",
+        "bytes": 32065,
+        "gitBlobSha1": "ac50b9fcff25220f38af1ced0b41427c50e71953"
+      },
+      {
+        "path": "hy3dgen/__init__.py",
+        "bytes": 920,
+        "gitBlobSha1": "8bb2bf86e283e50f0df2ecfba8fc66289df09901"
+      },
+      {
+        "path": "hy3dgen/shapegen/__init__.py",
+        "bytes": 1181,
+        "gitBlobSha1": "1b1f9cce42c1d2bef94bbb2d7b088d24e76fe01e"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/__init__.py",
+        "bytes": 1665,
+        "gitBlobSha1": "8179353ba7a5bdb8bcc30baa64e319fb8f884d57"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/__init__.py",
+        "bytes": 1360,
+        "gitBlobSha1": "20bbf8d9559f8d5de7d7ae2d88bbb0348a197dc4"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/attention_blocks.py",
+        "bytes": 26121,
+        "gitBlobSha1": "a8e568a160fa968711af2c71c3a2efc743a47860"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/attention_processors.py",
+        "bytes": 3913,
+        "gitBlobSha1": "f7b232eb0d16d67b9598a7e49f57d6616f2e5bed"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/model.py",
+        "bytes": 10461,
+        "gitBlobSha1": "7401d534d374c53ac308170db6271207a7db9168"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/surface_extractors.py",
+        "bytes": 3895,
+        "gitBlobSha1": "f4d8f63ab2cc56ddd2171f299519b226d77f2eba"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/autoencoders/volume_decoders.py",
+        "bytes": 18300,
+        "gitBlobSha1": "d7bfd84647786b43d7815c788931326a305c7dca"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/conditioner.py",
+        "bytes": 9192,
+        "gitBlobSha1": "d0d848c3b0d82eba4e4453d2c266f8fa7a1aeaaa"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/denoisers/__init__.py",
+        "bytes": 961,
+        "gitBlobSha1": "72609333e27d68d377905ba9e67655de7021c31b"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/denoisers/hunyuan3ddit.py",
+        "bytes": 14984,
+        "gitBlobSha1": "f6e22a0633b82b71cfdcaae256ff9d25c58db6b9"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/denoisers/hunyuandit.py",
+        "bytes": 21440,
+        "gitBlobSha1": "42481eaea4107db4244638032e1203dcaf3d18f7"
+      },
+      {
+        "path": "hy3dgen/shapegen/models/denoisers/moe_layers.py",
+        "bytes": 6352,
+        "gitBlobSha1": "fe669783178e9fe5fc7c771acf6b0e153a1563b0"
+      },
+      {
+        "path": "hy3dgen/shapegen/pipelines.py",
+        "bytes": 31934,
+        "gitBlobSha1": "fc8acc6a793264d50f62b5b69573c67dfe216d4b"
+      },
+      {
+        "path": "hy3dgen/shapegen/postprocessors.py",
+        "bytes": 7060,
+        "gitBlobSha1": "d258369e2b9116090ade3c955d57215d1481138e"
+      },
+      {
+        "path": "hy3dgen/shapegen/preprocessors.py",
+        "bytes": 5992,
+        "gitBlobSha1": "8a9cb9ea1591363fb77f4e02351a0f945e3bc1ab"
+      },
+      {
+        "path": "hy3dgen/shapegen/schedulers.py",
+        "bytes": 18997,
+        "gitBlobSha1": "13f0da86b278679d427498128392a7a1ad69b2e6"
+      },
+      {
+        "path": "hy3dgen/shapegen/surface_loaders.py",
+        "bytes": 6182,
+        "gitBlobSha1": "793958dc61c158cef880ccfe6c5de312d92473cd"
+      },
+      {
+        "path": "hy3dgen/shapegen/utils.py",
+        "bytes": 4526,
+        "gitBlobSha1": "6ac8f5d42c47df0dc765e2cd28b352bed0a2dd8e"
+      }
+    ]
+  },
+  "model": {
+    "repository": "tencent/Hunyuan3D-2mini",
+    "revision": "f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6",
+    "gated": false,
+    "files": [
+      {
+        "path": "hunyuan3d-dit-v2-mini-turbo/model.fp16.safetensors",
+        "bytes": 3822584202,
+        "sha256": "bdbcef30dd0149a281e17d5b5b1fdad1122c904e098a42f3100e04e03c247bc4"
+      },
+      {
+        "path": "hunyuan3d-dit-v2-mini-turbo/config.yaml",
+        "bytes": 1664,
+        "gitBlobSha1": "70a77756aaa5429626f4106e2cd882ca494221ab"
+      },
+      {
+        "path": "LICENSE",
+        "bytes": 17828,
+        "gitBlobSha1": "58e0779d576cb14caed1d443cf4d5785c2497fe1"
+      },
+      {
+        "path": "NOTICE",
+        "bytes": 32064,
+        "gitBlobSha1": "0e623667e16ed2034540ca9ace4ebc8b33865baf"
+      }
+    ]
+  },
+  "license": {
+    "name": "Tencent Hunyuan 3D 2.0 Community License",
+    "url": "https://huggingface.co/tencent/Hunyuan3D-2mini/blob/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/LICENSE",
+    "excludedTerritories": [
+      "European Union",
+      "United Kingdom",
+      "South Korea"
+    ],
+    "additionalTerms": "Redistribution, acceptable-use, provider disclosure and scale conditions apply; see pinned LICENSE and NOTICE. No gated access is accepted by this adapter."
+  },
+  "verificationSources": [
+    "https://huggingface.co/api/models/tencent/Hunyuan3D-2mini/tree/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6?recursive=true&expand=false",
+    "https://api.github.com/repos/Tencent-Hunyuan/Hunyuan3D-2/git/trees/aa9c5e5d318d2ea2825de6c3ca76d6438f661322?recursive=1"
+  ],
+  "requirements": {
+    "officialDefaultVramGB": 6,
+    "stagedCudaExperimentMinimumTotalGiB": 3.5,
+    "stagedCudaExperimentMinimumFreeGiB": 2.75,
+    "minimumAvailableRamGiB": 1.25,
+    "cpuMinimumAvailableRamGiB": 6,
+    "verifiedLaptopFit": false
+  }
+}

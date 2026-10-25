@@ -1,0 +1,18 @@
+{
+  "label": "baseline-without-noetra",
+  "body_length": 4.6,
+  "body_half_width": 1.0,
+  "axle_half_distance": 1.35,
+  "wheel_y": 0.855,
+  "tire_radius": 0.355,
+  "tire_half_width": 0.135,
+  "arch_radius": 0.39,
+  "roof_height": 1.16,
+  "body_sections": 65,
+  "body_ring_points": 40,
+  "wheel_segments": 96,
+  "wheel_cross_segments": 20,
+  "render_samples": 48,
+  "render_width": 1440,
+  "render_height": 900
+}

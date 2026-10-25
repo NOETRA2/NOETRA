@@ -1,0 +1,33 @@
+{
+  "method": "Direct upstream Hunyuan pipeline, no NOETRA engine/SDK/runtime imports",
+  "provider": "Hunyuan3D-2mini Turbo",
+  "sourceCommit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+  "modelRevision": "f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6",
+  "weightsSha256": "bdbcef30dd0149a281e17d5b5b1fdad1122c904e098a42f3100e04e03c247bc4",
+  "conditioningSha256": "5d5f23f78e566e56188fa0f3ba0bd742b880a0d31df6e6dfa97ad4c7034da9e9",
+  "inputScope": "Same frozen RGBA conditioning image as the assisted run. Its U2Net alpha is shared, not independently re-estimated.",
+  "seed": 12345,
+  "steps": 8,
+  "resolution": 192,
+  "numChunks": 1024,
+  "precision": "float16",
+  "stageOrder": [
+    "conditioner",
+    "model",
+    "vae"
+  ],
+  "inferenceSeconds": 71.75,
+  "totalSeconds": 129.43700000000536,
+  "peakAllocatedVramBytes": 2571237376,
+  "vertices": 81326,
+  "triangles": 162196,
+  "watertight": true,
+  "windingConsistent": true,
+  "rawMeshSha256": "6df0c98921086be7d673a37e8b150fb2aa4aa8ef3817a4326d609f01e9d0b220",
+  "accuracyPercent": null,
+  "reason": "No ground-truth 3D lion or calibrated correspondence; no 90% claim.",
+  "confounds": [
+    "Standalone benchmark keeps the same custom memory staging as the assisted provider. It is not the upstream default deployment.",
+    "A deterministic raw shape may match the assisted raw shape; this does not demonstrate an accuracy improvement."
+  ]
+}

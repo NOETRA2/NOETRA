@@ -1,0 +1,21 @@
+{
+  "without-noetra": {
+    "vertices": 81326,
+    "triangles": 162196,
+    "meshSha256": "6df0c98921086be7d673a37e8b150fb2aa4aa8ef3817a4326d609f01e9d0b220"
+  },
+  "with-noetra": {
+    "vertices": 81326,
+    "triangles": 162196,
+    "meshSha256": "6df0c98921086be7d673a37e8b150fb2aa4aa8ef3817a4326d609f01e9d0b220"
+  },
+  "comparison": {
+    "exactSameOrderedVertexPositions": true,
+    "maxOrderedPositionDifference": 0.0,
+    "metricAccuracyPercent": null,
+    "reason": "No physical 3D ground truth. These are shared-input, shared-checkpoint workflow comparisons, not a 90% accuracy test.",
+    "renderSettingsMatched": true,
+    "sourceImageConditioningShared": true,
+    "baselineImportsNOETRA": false
+  }
+}
