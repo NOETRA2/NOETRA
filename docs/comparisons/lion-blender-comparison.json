@@ -1,0 +1,25 @@
+{
+  "baselineMethod": "Host-authored procedural Blender mesh, built from primitives and remeshed; no NOETRA modules or learned shape model",
+  "baselineMeshSha256": "0c1158858bef4ddd2f78db0c5420b376a7d3bcd9ca3d14409ec8946d80738d69",
+  "seed": 8053,
+  "accuracyPercent": null,
+  "limitations": [
+    "Different construction methods, not a controlled accuracy or model-quality comparison.",
+    "Procedural lion is an approximation, not exact reconstruction.",
+    "Independent baseline finished before existing comparison mesh was loaded."
+  ],
+  "meshes": {
+    "without-noetra": {
+      "objects": 144,
+      "vertices": 79278,
+      "triangles": 157600
+    },
+    "with-noetra": {
+      "objects": 1,
+      "vertices": 81326,
+      "triangles": 162196
+    }
+  },
+  "comparisonMeshSha256": "6df0c98921086be7d673a37e8b150fb2aa4aa8ef3817a4326d609f01e9d0b220",
+  "noetraImported": false
+}

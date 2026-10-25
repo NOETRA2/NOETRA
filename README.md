@@ -22,17 +22,22 @@ The images below are **Blender renders of actual meshes**, not generated concept
 pictures presented as 3D output. Details, settings and limitations are in
 [comparisons](docs/comparisons/README.md).
 
-### Lion: direct underlying model versus NOETRA workflow
+### Lion: standalone Blender mesh beside the NOETRA workflow
 
-![Actual lion meshes: direct Hunyuan baseline and NOETRA workflow](docs/assets/lion-comparison.png)
+![Without NOETRA: standalone procedural Blender lion. With NOETRA: Hunyuan3D-2mini workflow.](docs/assets/lion-blender-comparison.png)
 
-Both use **Hunyuan3D-2mini Turbo**, the same frozen reference/foreground image,
-checkpoint, seed, precision and extraction settings. The direct baseline calls
-the upstream model without importing NOETRA's SDK, engine or runtime modules.
-Both retain the same custom staged-memory method for the local 4 GB GPU.
-NOETRA's measured-colour preview is documented separately and is **unfinished**.
-See the comparison report for the actual geometry equality/differences; no
-unsupported reconstruction-accuracy percentage is claimed.
+**Left: without NOETRA**, a new host-authored procedural lion built directly in
+Blender from primitives, remeshing and solid geometry. No NOETRA code or learned
+shape model generated that mesh. **Right: with NOETRA**, the existing lion created
+through its **Hunyuan3D-2mini Turbo** workflow. Both pictures render real meshes
+using the same clay material, lighting, view directions and normalized height.
+The procedural lion is stylized; these different methods are **not a controlled
+test of NOETRA's quality or accuracy**. The downloadable mesh, script and second
+angle are in [comparisons](docs/comparisons/README.md).
+
+We also ran a separate direct Hunyuan inference with NOETRA bypassed and otherwise
+matching inputs/settings. That result is identical to the workflow's raw mesh;
+the report preserves this evidence. No numerical accuracy gain is claimed.
 
 ## What is implemented
 

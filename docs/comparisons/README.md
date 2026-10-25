@@ -2,8 +2,35 @@
 
 All gallery pictures here are actual Blender renders of saved triangle meshes.
 Reference/concept artwork is not passed off as a model render. The published
-core source is an unchanged snapshot; these documents and benchmarks describe
+core source is a publication snapshot with a corrected CLI self-test; these documents and benchmarks describe
 what the software did and what remains unfinished.
+
+## Lion: new standalone Blender mesh, without NOETRA
+
+![Without NOETRA procedural mesh beside the existing NOETRA workflow mesh](../assets/lion-blender-comparison.png)
+
+![Second matching view of both real meshes](../assets/lion-blender-comparison-side.png)
+
+The **left** mesh is a new host-authored procedural Blender study of the same
+standing male-lion subject. The script creates its own body, legs, paws, facial
+geometry, mane and tail; it does not import NOETRA or invoke a learned shape
+model. Its GLB was exported and hash-frozen before the existing NOETRA mesh was
+opened for rendering. It contains no copied vertices or photographic planes.
+
+The **right** mesh is the existing Hunyuan3D-2mini Turbo result orchestrated by
+NOETRA. Both use matching neutral clay, studio lighting, view directions, render
+resolution and sampling; height/grounding are normalized for presentation.
+Proportions remain unchanged. The new procedural result is stylized, not an
+exact reconstruction. Construction methods and geometry budgets differ, so this
+is a **workflow illustration, not a controlled ablation or accuracy benchmark**.
+It does not establish that NOETRA improves the same underlying generator.
+
+[Download the actual without-NOETRA mesh](../models/lion-without-noetra-procedural.glb)
+· [Reproduce the Blender build](../../benchmarks/build_standalone_lion.py)
+· [Build and render evidence](lion-blender-comparison.json)
+
+The separately matched direct-model experiment below is retained to distinguish
+the effect of orchestration from differences between construction methods.
 
 ## Lion: direct underlying model and NOETRA workflow
 
