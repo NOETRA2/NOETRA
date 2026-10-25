@@ -19,3 +19,5 @@ jobs:
       - run: npm run check
       - run: node dist/apps/cli/src/index.js test
       - run: npm pack --dry-run
+      - if: matrix.node == '26'
+        run: npm run test:package

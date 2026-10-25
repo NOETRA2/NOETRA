@@ -13,6 +13,7 @@ import { applyJsonSetup, clientPath, codexSnippet, detectClients, planJsonSetup,
 import type { ClientName } from './setup.js';
 import { selfTest } from './self-test.js';
 import { readReconstructionConfig } from '../../../packages/reconstruction/src/index.js';
+import { startDemo } from '../../demo/src/server.js';
 
 const cliPath = fileURLToPath(import.meta.url);
 const parsed = parseArgs({ allowPositionals: true, strict: true, options: {
@@ -20,7 +21,7 @@ const parsed = parseArgs({ allowPositionals: true, strict: true, options: {
   apply: { type: 'boolean', default: false }, yes: { type: 'boolean', default: false },
   rollback: { type: 'string' }, package: { type: 'string' }, 'allow-root': { type: 'string', multiple: true },
   version: { type: 'boolean' }, help: { type: 'boolean' }, 'reconstruction-config': { type: 'string' },
-  'ghidra-dir':{type:'string'},'java-home':{type:'string'}
+  'ghidra-dir':{type:'string'},'java-home':{type:'string'}, port:{type:'string'}
 } });
 const command = parsed.positionals[0] ?? 'help';
 const flags = parsed.values;
@@ -29,9 +30,17 @@ function output(value: unknown): void { process.stdout.write(JSON.stringify(valu
 async function run(): Promise<void> {
   if (flags.version) { output({ name: 'NOETRA', version: VERSION }); return; }
   if (command === 'help' || flags.help) {
-    process.stdout.write(`NOETRA ${VERSION} — standalone cognitive engine\n\nCommands:\n  setup [--client cursor|claude|codex] [--scope project|user]\n        [--apply --yes] [--rollback RECEIPT --yes]\n  doctor [--project PATH]\n  mcp [--project PATH]\n  integrations [rea --package DIRECTORY --allow-root DIRECTORY --apply --yes]\n  test\n\nNo other Nexa apps, global packages or model weights are installed.\nSetup previews changes by default. REA is optional. Codex registration is a manual snippet in this alpha.\n`); return;
+    process.stdout.write(`NOETRA ${VERSION} — standalone cognitive engine\n\nCommands:\n  setup [--client cursor|claude|codex] [--scope project|user]\n        [--apply --yes] [--rollback RECEIPT --yes]\n  doctor [--project PATH]\n  mcp [--project PATH]\n  integrations [rea --package DIRECTORY --allow-root DIRECTORY --apply --yes]\n  test\n  demo [--port 7860] (local browser demonstration)\n\nNo other Nexa apps, global packages or model weights are installed.\nSetup previews changes by default. REA is optional. Codex registration is a manual snippet in this alpha.\n`); return;
   }
   if (!supportedNode()) fail('UNSUPPORTED_NODE', 'Use Node.js 24.11+ (24.x) or Node.js 26+.');
+  if (command === 'demo') {
+    const port = Number(flags.port ?? 7860);
+    const server = await startDemo(port);
+    const address = server.address();
+    output({ demo: `http://127.0.0.1:${address && typeof address === 'object' ? address.port : port}`, localOnly: true, gpuRequired: false, stop: 'Ctrl+C' });
+    for (const signal of ['SIGINT','SIGTERM'] as const) process.once(signal, () => { server.close(); });
+    return;
+  }
   const project = await realpath(resolve(flags.project ?? process.cwd()));
   if (!(await lstat(project)).isDirectory()) fail('INVALID_PROJECT', 'Project path must be an existing directory.');
   if (command === 'doctor') {

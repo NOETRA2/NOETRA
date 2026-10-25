@@ -23,7 +23,7 @@ method, or install the tarball directly with npm as below.
 From the extracted directory:
 
 ```sh
-npm install --prefix ./noetra-tools --ignore-scripts --no-audit --no-fund ./noetra-0.1.0-alpha.3.tgz
+npm install --prefix ./noetra-tools --ignore-scripts --no-audit --no-fund ./noetra-0.1.0-alpha.4.tgz
 ```
 
 Executable: `noetra-tools/node_modules/.bin/noetra` (`noetra.cmd` on Windows).

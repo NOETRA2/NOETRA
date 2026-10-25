@@ -1,43 +1,56 @@
 # NOETRA — Universal Cognitive Engine
 
-**Local-first tools for evidence, formal checks, planning and experimental 3D workflows.**
+**Give AI agents a checkable trail: evidence, formal logic and prerequisite plans.**
 
-NOETRA is a standalone TypeScript SDK, command-line application and MCP server.
-It helps an AI host retain evidence, check explicit constraints, plan bounded
-work and record what actually happened. The optional reconstruction tools connect
-local image analysis, independently installed shape models and Blender.
+Local-first, open-source **MCP server · CLI · TypeScript SDK**. The core runs on
+an ordinary CPU with Node.js; **no GPU, AI subscription or model API key needed**.
+It stores attributed evidence, checks supplied integer constraints through Z3,
+and plans from explicit dependencies. It does not replace your host AI.
 
-**Status: developer alpha, `0.1.0-alpha.3`.** NOETRA is not a foundation model,
-does not train or replace the host AI, and does not yet produce accurate detailed
-3D models automatically. **There is no validated “90% accurate” result.**
+[Try the demo locally](#try-it-in-one-minute) · [Install](#install-from-this-repository) ·
+[Connect your agent](#connect-an-ai-host) · [Tool API](docs/api/README.md) ·
+[Launch status](docs/launch/README.md)
+
+**Developer alpha `0.1.0-alpha.4` — npm and official MCP Registry publication are
+prepared, not live.** Use the source or a locally built package for now.
+Image-to-3D is an optional, unfinished advanced workflow; no validated 90% fidelity
+claim exists.
+
+## Try it in one minute
+
+After cloning the repository (Node.js 24.11+ in 24.x, or 26+):
+
+```sh
+npm ci --ignore-scripts
+npm run demo
+```
+
+Open **http://127.0.0.1:7860**. Check a claim, toggle a missing prerequisite or
+inspect an evidence record. These controls execute the actual engine, not canned
+results. Every run has a separate in-memory database, discarded afterward. No
+model downloads or optional 3D tools are installed. Stop with Ctrl+C.
+
+![Actual NOETRA core output, presented as a result card](docs/assets/noetra-demo.png)
+
+[Watch the 60-second result walkthrough](docs/media/noetra-demo-60s.mp4) ·
+[How to reproduce the examples](docs/demo/README.md)
+
+The walkthrough presents actual engine outputs as labelled cards; it is not a
+browser recording. [Capture provenance](docs/demo/PROVENANCE.md).
+
+## A result you can inspect
+
+| Example | What NOETRA does | Scope |
+| --- | --- | --- |
+| Integer premise `x ≥ 2`, claim `x ≥ 1` | Z3 checks entailment | Valid only for the supplied integer premises |
+| Same premise, stronger claim `x ≥ 5` | Returns a counterexample | A formal counterexample, not a real-world measurement |
+| Build → review → release, tests missing | Reports blocked actions | Actions/effects are supplied; nothing is published |
+| One observed test result | Stores origin, digest and limitations | Remains an untrusted observation, not proof |
 
 Maintained by [NOETRA2](https://github.com/NOETRA2). Core code is MIT licensed.
 Optional providers have their own licences and are not bundled or installed
 automatically. NOETRA is independent of Nexa apps and is not endorsed by Tencent,
 OpenAI, REA, Blender or other upstream projects.
-
-## Real mesh demonstrations
-
-The images below are **Blender renders of actual meshes**, not generated concept
-pictures presented as 3D output. Details, settings and limitations are in
-[comparisons](docs/comparisons/README.md).
-
-### Lion: standalone Blender mesh beside the NOETRA workflow
-
-![Without NOETRA: standalone procedural Blender lion. With NOETRA: Hunyuan3D-2mini workflow.](docs/assets/lion-blender-comparison.png)
-
-**Left: without NOETRA**, a new host-authored procedural lion built directly in
-Blender from primitives, remeshing and solid geometry. No NOETRA code or learned
-shape model generated that mesh. **Right: with NOETRA**, the existing lion created
-through its **Hunyuan3D-2mini Turbo** workflow. Both pictures render real meshes
-using the same clay material, lighting, view directions and normalized height.
-The procedural lion is stylized; these different methods are **not a controlled
-test of NOETRA's quality or accuracy**. The downloadable mesh, script and second
-angle are in [comparisons](docs/comparisons/README.md).
-
-We also ran a separate direct Hunyuan inference with NOETRA bypassed and otherwise
-matching inputs/settings. That result is identical to the workflow's raw mesh;
-the report preserves this evidence. No numerical accuracy gain is claimed.
 
 ## What is implemented
 
@@ -121,9 +134,32 @@ before provisioning it. Its licence contains territory and use restrictions.
 Powered by Tencent Hunyuan when that provider is enabled; Tencent does not
 sponsor, endorse or operate this independent project.
 
+## Real mesh demonstrations
+
+The images below are **Blender renders of actual meshes**, not generated concept
+pictures presented as 3D output. Details, settings and limitations are in
+[comparisons](docs/comparisons/README.md).
+
+### Lion: standalone Blender mesh beside the NOETRA workflow
+
+![Without NOETRA: standalone procedural Blender lion. With NOETRA: Hunyuan3D-2mini workflow.](docs/assets/lion-blender-comparison.png)
+
+**Left: without NOETRA**, a new host-authored procedural lion built directly in
+Blender from primitives, remeshing and solid geometry. No NOETRA code or learned
+shape model generated that mesh. **Right: with NOETRA**, the existing lion created
+through its **Hunyuan3D-2mini Turbo** workflow. Both pictures render real meshes
+using the same clay material, lighting, view directions and normalized height.
+The procedural lion is stylized; these different methods are **not a controlled
+test of NOETRA's quality or accuracy**. The downloadable mesh, script and second
+angle are in [comparisons](docs/comparisons/README.md).
+
+We also ran a separate direct Hunyuan inference with NOETRA bypassed and otherwise
+matching inputs/settings. That result is identical to the workflow's raw mesh;
+the report preserves this evidence. No numerical accuracy gain is claimed.
+
 ## Validation and limitations
 
-The local core TypeScript/build checks, 67 Node tests and CLI protocol self-test passed. The reconstruction
+The local core TypeScript/build checks, 71 Node tests and CLI protocol self-test passed. The reconstruction
 Python suite and focused cache/region tests passed (156 tests across the recorded
 runs). The example meshes were actually exported, reimported and rendered.
 GitHub Actions results, once available, are separate from these local checks.

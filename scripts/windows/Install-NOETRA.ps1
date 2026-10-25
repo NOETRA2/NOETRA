@@ -4,12 +4,18 @@ param(
     [switch]$Yes
 )
 $ErrorActionPreference = 'Stop'
-$archiveName = 'noetra-0.1.0-alpha.3.tgz'
-$archive = Join-Path $PSScriptRoot $archiveName
 $manifestPath = Join-Path $PSScriptRoot 'SHA256SUMS.json'
-if (!(Test-Path -LiteralPath $archive -PathType Leaf) -or !(Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
+if (!(Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
     throw 'Extract the entire NOETRA standalone ZIP first. Its package and checksum file must be beside this installer.'
 }
+$manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+$archives = @($manifest.PSObject.Properties.Name)
+if ($archives.Count -ne 1 -or $archives[0] -notmatch '^noetra-[0-9]+\.[0-9]+\.[0-9]+(?:-[a-zA-Z0-9.-]+)?\.tgz$') {
+    throw 'The checksum manifest must name exactly one NOETRA package archive.'
+}
+$archiveName = $archives[0]
+$archive = Join-Path $PSScriptRoot $archiveName
+if (!(Test-Path -LiteralPath $archive -PathType Leaf)) { throw 'The NOETRA package archive is missing. Extract the full bundle.' }
 $nodeCommand = Get-Command node.exe -ErrorAction SilentlyContinue
 $npmCommand = Get-Command npm.cmd -ErrorAction SilentlyContinue
 if (!$nodeCommand -or !$npmCommand) {
@@ -23,7 +29,6 @@ $minor = [int]$parts[1]
 if (!(($major -eq 24 -and $minor -ge 11) -or $major -ge 26)) {
     throw "Node.js $nodeVersion is unsupported. Use Node.js 24.11+ (24.x) or 26+."
 }
-$manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 $expected = $manifest.$archiveName
 $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
 if (!$expected -or $actual -ne $expected) { throw 'Package checksum does not match. Nothing was installed.' }

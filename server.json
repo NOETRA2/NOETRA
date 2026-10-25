@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.NOETRA2/noetra",
+  "title": "NOETRA",
+  "description": "Local-first evidence tracking, formal logic checks and prerequisite planning for AI agents.",
+  "repository": { "url": "https://github.com/NOETRA2/NOETRA", "source": "github" },
+  "version": "0.1.0-alpha.4",
+  "packages": [{
+    "registryType": "npm", "identifier": "noetra", "version": "0.1.0-alpha.4",
+    "transport": { "type": "stdio" },
+    "packageArguments": [
+      { "type": "positional", "value": "mcp" },
+      { "type": "named", "name": "--project", "description": "Existing absolute directory for this project's private local memory", "format": "filepath", "isRequired": true }
+    ]
+  }]
+}

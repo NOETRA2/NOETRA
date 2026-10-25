@@ -1,24 +1,49 @@
 {
   "name": "noetra",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Local-first structured reasoning, evidence, planning and permission-scoped software investigation for AI agents",
   "type": "module",
   "license": "MIT",
-  "engines": { "node": "^24.11.0 || >=26.0.0" },
+  "engines": {
+    "node": "^24.11.0 || >=26.0.0"
+  },
   "packageManager": "npm@11.16.0",
-  "workspaces": ["packages/*", "packages/integrations/*", "apps/*"],
-  "bin": { "noetra": "dist/apps/cli/src/index.js" },
+  "workspaces": [
+    "packages/*",
+    "packages/integrations/*",
+    "apps/*"
+  ],
+  "bin": {
+    "noetra": "dist/apps/cli/src/index.js"
+  },
   "main": "dist/packages/sdk/src/index.js",
   "types": "dist/packages/sdk/src/index.d.ts",
-  "exports": { ".": { "types": "./dist/packages/sdk/src/index.d.ts", "import": "./dist/packages/sdk/src/index.js" } },
-  "files": ["dist/apps", "dist/packages", "docs", "examples", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"],
+  "exports": {
+    ".": {
+      "types": "./dist/packages/sdk/src/index.d.ts",
+      "import": "./dist/packages/sdk/src/index.js"
+    }
+  },
+  "files": [
+    "dist/apps",
+    "dist/packages",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "server.json"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/build-runtime.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && vitest run",
     "test:rea": "node scripts/verify-rea.mjs",
     "check": "npm run typecheck && npm run build && npm test",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "demo": "npm run build && node dist/apps/demo/src/server.js",
+    "test:package": "node scripts/verify-package.mjs",
+    "prepare:space": "npm run build && node scripts/prepare-space.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/client": "2.4.0",
@@ -30,5 +55,30 @@
     "@types/node": "26.6.5",
     "typescript": "7.0.2",
     "vitest": "5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NOETRA2/NOETRA.git"
+  },
+  "homepage": "https://github.com/NOETRA2/NOETRA#readme",
+  "bugs": {
+    "url": "https://github.com/NOETRA2/NOETRA/issues"
+  },
+  "author": "NOETRA2",
+  "keywords": [
+    "mcp",
+    "ai-agents",
+    "reasoning-engine",
+    "evidence-tracking",
+    "formal-verification",
+    "z3",
+    "planning",
+    "local-first"
+  ],
+  "mcpName": "io.github.NOETRA2/noetra",
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   }
 }

@@ -1,6 +1,7 @@
 import { copyFile, mkdir, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 const root=new URL('../',import.meta.url);
+await cp(new URL('apps/demo/public/',root),new URL('dist/apps/demo/public/',root),{recursive:true});
 const folder=new URL('dist/packages/reconstruction/python/',root);
 await mkdir(folder,{recursive:true});
 for(const name of ['worker.py','geometry.py','blender_adapter.py','part_correction.py','part_adapter.py','outline_model.py','outline_adapter.py','photo_pipeline.py','photo_provider.py','photo_geometry.py','photo_blender.py','photo_sfm.py','surface_repair.py','photo_surface.py','photo_surface_blender.py','structural_math.py','structural_blender.py','structural_completion.py','blender_framing.py']) await copyFile(new URL('packages/reconstruction/python/'+name,root),new URL(name,folder));

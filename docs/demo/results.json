@@ -1,0 +1,329 @@
+{
+  "format": "Actual NOETRA engine responses; not browser screenshots",
+  "runs": [
+    {
+      "request": {
+        "example": "logic",
+        "lowerBound": 2,
+        "claimBound": 1
+      },
+      "response": {
+        "title": "A formal claim, checked by Z3",
+        "summary": "For integers, x ≥ 2 entails x ≥ 1.",
+        "result": {
+          "ok": true,
+          "status": "VERIFIED",
+          "data": {
+            "record": {
+              "project": "isolated-demo",
+              "id": "42efe38a-0d1f-4382-9fa0-8cc78c9ca3a7",
+              "kind": "verification",
+              "revision": 1,
+              "createdAt": "2026-10-25T04:26:56.677Z",
+              "expiresAt": null,
+              "value": {
+                "status": "VERIFIED",
+                "consistency": "sat",
+                "constraintIds": [
+                  "premise"
+                ],
+                "method": "Z3 integer linear arithmetic",
+                "limitations": [
+                  "Formal validity is conditional on the supplied premises and integer encoding; it does not establish empirical truth."
+                ],
+                "entailment": "entailed",
+                "scope": "Claim follows from the supplied consistent integer premises; no claim of real-world truth.",
+                "nextExperiment": "Independently measure whether the premises match the target system."
+              }
+            }
+          },
+          "limitations": [
+            "Formal validity is conditional on the supplied premises and integer encoding; it does not establish empirical truth."
+          ]
+        },
+        "privacy": "This run uses a fresh in-memory database, discarded afterward. No model API, telemetry, uploaded files or shared project memory."
+      }
+    },
+    {
+      "request": {
+        "example": "logic",
+        "lowerBound": 2,
+        "claimBound": 5
+      },
+      "response": {
+        "title": "A formal claim, checked by Z3",
+        "summary": "x ≥ 2 does not guarantee x ≥ 5. Inspect the counterexample below.",
+        "result": {
+          "ok": true,
+          "status": "CONTRADICTED",
+          "data": {
+            "record": {
+              "project": "isolated-demo",
+              "id": "d990d8f7-3c1e-42eb-ab6d-2c38278185b8",
+              "kind": "verification",
+              "revision": 1,
+              "createdAt": "2026-10-25T04:26:57.366Z",
+              "expiresAt": null,
+              "value": {
+                "status": "CONTRADICTED",
+                "consistency": "sat",
+                "constraintIds": [
+                  "premise"
+                ],
+                "method": "Z3 integer linear arithmetic",
+                "limitations": [
+                  "Formal validity is conditional on the supplied premises and integer encoding; it does not establish empirical truth."
+                ],
+                "entailment": "counterexample",
+                "model": {
+                  "x": "2"
+                },
+                "scope": "Claim follows from the supplied consistent integer premises; no claim of real-world truth.",
+                "nextExperiment": "Inspect the counterexample or revise the premises/claim."
+              }
+            }
+          },
+          "limitations": [
+            "Formal validity is conditional on the supplied premises and integer encoding; it does not establish empirical truth."
+          ]
+        },
+        "privacy": "This run uses a fresh in-memory database, discarded afterward. No model API, telemetry, uploaded files or shared project memory."
+      }
+    },
+    {
+      "request": {
+        "example": "planning",
+        "testsPassed": false
+      },
+      "response": {
+        "title": "Plan a release with explicit prerequisites",
+        "summary": "Review and release are blocked because tests-passed was not supplied.",
+        "result": {
+          "ok": true,
+          "status": "CONTRADICTED",
+          "data": {
+            "record": {
+              "project": "isolated-demo",
+              "id": "5d5c8599-3376-401c-86a1-2b9ccba6fc40",
+              "kind": "plan",
+              "revision": 1,
+              "createdAt": "2026-10-25T04:26:57.371Z",
+              "expiresAt": null,
+              "value": {
+                "goal": "Release only when the test prerequisite is available",
+                "actions": [
+                  {
+                    "id": "build",
+                    "description": "Build the package",
+                    "dependsOn": [],
+                    "requires": [],
+                    "provides": [
+                      "artifact"
+                    ],
+                    "state": "pending"
+                  },
+                  {
+                    "id": "review",
+                    "description": "Review the tested build",
+                    "dependsOn": [
+                      "build"
+                    ],
+                    "requires": [
+                      "artifact",
+                      "tests-passed"
+                    ],
+                    "provides": [
+                      "reviewed"
+                    ],
+                    "state": "pending"
+                  },
+                  {
+                    "id": "release",
+                    "description": "Prepare release",
+                    "dependsOn": [
+                      "review"
+                    ],
+                    "requires": [
+                      "reviewed"
+                    ],
+                    "provides": [],
+                    "state": "pending"
+                  }
+                ],
+                "order": [
+                  "build"
+                ],
+                "blocked": [
+                  {
+                    "id": "review",
+                    "missingDependencies": [],
+                    "unfinishedDependencies": [],
+                    "missingPreconditions": [
+                      "tests-passed"
+                    ],
+                    "cycle": false
+                  },
+                  {
+                    "id": "release",
+                    "missingDependencies": [],
+                    "unfinishedDependencies": [
+                      "review"
+                    ],
+                    "missingPreconditions": [
+                      "reviewed"
+                    ],
+                    "cycle": false
+                  }
+                ],
+                "cycles": [],
+                "failed": [],
+                "available": [
+                  "artifact"
+                ],
+                "feasible": false,
+                "limitations": [
+                  "Effects and completed states are supplied premises. This monotonic planner does not model consumable resources, delete effects, action costs or general classical planning."
+                ]
+              }
+            }
+          },
+          "limitations": [
+            "Effects and completed states are supplied premises. This monotonic planner does not model consumable resources, delete effects, action costs or general classical planning."
+          ]
+        },
+        "privacy": "This run uses a fresh in-memory database, discarded afterward. No model API, telemetry, uploaded files or shared project memory."
+      }
+    },
+    {
+      "request": {
+        "example": "planning",
+        "testsPassed": true
+      },
+      "response": {
+        "title": "Plan a release with explicit prerequisites",
+        "summary": "The supplied test prerequisite allows build → review → release.",
+        "result": {
+          "ok": true,
+          "status": "DERIVED",
+          "data": {
+            "record": {
+              "project": "isolated-demo",
+              "id": "6cc0b2db-98d6-499f-8938-79cd6248883b",
+              "kind": "plan",
+              "revision": 1,
+              "createdAt": "2026-10-25T04:26:57.373Z",
+              "expiresAt": null,
+              "value": {
+                "goal": "Release only when the test prerequisite is available",
+                "actions": [
+                  {
+                    "id": "build",
+                    "description": "Build the package",
+                    "dependsOn": [],
+                    "requires": [],
+                    "provides": [
+                      "artifact"
+                    ],
+                    "state": "pending"
+                  },
+                  {
+                    "id": "review",
+                    "description": "Review the tested build",
+                    "dependsOn": [
+                      "build"
+                    ],
+                    "requires": [
+                      "artifact",
+                      "tests-passed"
+                    ],
+                    "provides": [
+                      "reviewed"
+                    ],
+                    "state": "pending"
+                  },
+                  {
+                    "id": "release",
+                    "description": "Prepare release",
+                    "dependsOn": [
+                      "review"
+                    ],
+                    "requires": [
+                      "reviewed"
+                    ],
+                    "provides": [],
+                    "state": "pending"
+                  }
+                ],
+                "order": [
+                  "build",
+                  "review",
+                  "release"
+                ],
+                "blocked": [],
+                "cycles": [],
+                "failed": [],
+                "available": [
+                  "tests-passed",
+                  "artifact",
+                  "reviewed"
+                ],
+                "feasible": true,
+                "limitations": [
+                  "Effects and completed states are supplied premises. This monotonic planner does not model consumable resources, delete effects, action costs or general classical planning."
+                ]
+              }
+            }
+          },
+          "limitations": [
+            "Effects and completed states are supplied premises. This monotonic planner does not model consumable resources, delete effects, action costs or general classical planning."
+          ]
+        },
+        "privacy": "This run uses a fresh in-memory database, discarded afterward. No model API, telemetry, uploaded files or shared project memory."
+      }
+    },
+    {
+      "request": {
+        "example": "evidence"
+      },
+      "response": {
+        "title": "Keep an observation separate from a proof",
+        "summary": "The record is OBSERVED and untrusted, with a digest. It is not promoted to VERIFIED.",
+        "result": {
+          "ok": true,
+          "status": "OBSERVED",
+          "data": {
+            "record": {
+              "project": "isolated-demo",
+              "id": "f80d5332-1e25-4e83-9df5-ee502513a780",
+              "kind": "evidence",
+              "revision": 1,
+              "createdAt": "2026-10-25T04:26:57.378Z",
+              "expiresAt": null,
+              "value": {
+                "claim": "One test installation succeeded",
+                "origin": {
+                  "kind": "tool",
+                  "reference": "Built-in demonstration fixture, not user telemetry",
+                  "timestamp": "2026-10-25T00:00:00.000Z"
+                },
+                "method": "Store a fixed example observation",
+                "observation": "CLI launched successfully in one controlled trial.",
+                "limitations": [
+                  "A single supplied observation does not establish universal installation success."
+                ],
+                "id": "f80d5332-1e25-4e83-9df5-ee502513a780",
+                "digest": "c506d0d968d1ac7e17f0665a6a86047cdd3d95e8e126caefec4bc7687d32b715",
+                "status": "OBSERVED",
+                "untrusted": true
+              }
+            }
+          },
+          "limitations": [
+            "Only receipt of the supplied observation is established. Imported content is untrusted, not a verified conclusion."
+          ]
+        },
+        "privacy": "This run uses a fresh in-memory database, discarded afterward. No model API, telemetry, uploaded files or shared project memory."
+      }
+    }
+  ]
+}

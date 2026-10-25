@@ -11,7 +11,7 @@ npm libraries. No npm lifecycle scripts are enabled.
 For Linux/macOS or a custom local installation:
 
 ```sh
-npm install --prefix ./noetra-tools --ignore-scripts --no-audit --no-fund ./noetra-0.1.0-alpha.3.tgz
+npm install --prefix ./noetra-tools --ignore-scripts --no-audit --no-fund ./noetra-0.1.0-alpha.4.tgz
 ./noetra-tools/node_modules/.bin/noetra test
 ```
 

@@ -1,0 +1,45 @@
+name: Installation report
+description: Help test NOETRA on a real developer machine. No private settings or credentials.
+title: "[Install] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include tokens, passwords, private paths, client settings, images or project memory. Replace personal data in command output."
+  - type: input
+    id: os
+    attributes:
+      label: OS and version
+      placeholder: "Windows 11 / macOS / Ubuntu"
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Node.js and npm versions
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: NOETRA version and installation method
+      placeholder: "0.1.0-alpha.4, source checkout or tarball"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Did the CLI self-test and one core example succeed?
+      options:
+        - "Yes, both succeeded"
+        - "Self-test only"
+        - "No, installation or running failed"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Commands, outcome and sanitized output
+      description: Include the operation you tried and any actionable error.
+    validations:
+      required: true
